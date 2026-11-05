@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lens Lab</title>
+<link rel="icon" href="media/favicon.svg?v=21" type="image/svg+xml">
+<link rel="icon" href="media/favicon.ico?v=21" sizes="32x32">
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png?v=21">
+<meta name="description" content="Exploration: lenses in the console. Read the evidence through a partner's or an expert's framework, switched on per chat from one control in the composer, with the lens file open to read.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css?v=6d2da45e">
+<link rel="stylesheet" href="components.css?v=9cdf3da6">
+<link rel="stylesheet" href="explorations.css?v=lens30a">
+<link rel="stylesheet" href="reference.css?v=72b99065">
+<!-- EXPLORATION 29 · LENS (Revs 76 and 77, 5 Nov 2026). From the 4 Nov call with
+     Ahn and Nathanael: let a reader adopt a partner's or an expert's framework
+     on purpose, in the open, per chat. The card is a .clarify; the rows, the
+     switch, the tag and the lens file are in explorations.css under
+     "29 · LENS". No page style block. Every framework text is sample text, and
+     Dr. Talia Mercer is a fictional placeholder. -->
+</head>
+<body>
+
+<section class="ref" id="top">
+  <div class="wrap">
+    <div class="plate"><span class="pl-n">29</span><span>Lens</span><span class="pl-r">Exploration · Rev 77 · 5 Nov 2026</span></div>
+    <div class="ref-t">Read the evidence through a partner&rsquo;s framework.</div>
+    <p class="ref-d">
+      By default Peace Intel answers from the whole literature and takes no institution&rsquo;s side. A lens
+      lets a reader choose a framework on purpose, for this chat: an organisation&rsquo;s, so a team reporting to a
+      funder gets answers in the indicators it already uses, or an expert&rsquo;s way of reading a problem. One
+      control in the composer&rsquo;s bar opens the lenses as a card in the thread. Each has a switch, a summary
+      under its name and the file Peace Intel actually reads, open to anyone. A lens that is on is named in
+      three places, so nobody reads a framed answer as the neutral one.
+    </p>
+    <div class="rule-row" style="--cols:3">
+      <div><h3>What it adds</h3><p class="note">One control in the bar (<code>.act</code>, the aperture glyph). A card of lenses in the thread, reusing <code>.clarify</code>. A switch, new to the system, at the right of each lens. The lens file in a <code>.dlg</code>, formatted or as Markdown.</p></div>
+      <div><h3>How a lens shows it is on</h3><p class="note">The control fills with ink and names it (<em>Lens &middot; AfP</em>). A line in the thread where it was turned on. A tag over every answer it shaped. All ink: the accent means evidence and action, and a lens is neither.</p></div>
+      <div><h3>What it costs</h3><p class="note">Production: a setting per chat, and the lens file passed to the model with the question. One Markdown file per lens, written or approved by its owner. Logos and names need each organisation&rsquo;s and each expert&rsquo;s permission.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ref" id="demo">
+  <div class="wrap">
+    <div class="plate"><span class="pl-n">29 &middot; 1</span><span>The whole flow</span><span class="pl-r">Live</span></div>
+    <div class="ref-t">Choose a mode, switch on a lens, ask.</div>
+    <p class="ref-d">Press <em>Normal</em> to choose how far Peace Intel goes (30). Press <em>Lens</em> in the composer. Press a lens&rsquo;s name to read its summary, and <em>Read the lens file</em> to see the file itself. Switch one or two on, press <em>Done</em>, then send a question.</p>
+    <div class="spec">
+      <div class="spec-h"><span class="sh-n">Try it</span><span class="badge">Live</span><span class="sh-d">framework texts are sample text</span></div>
+      <div class="ls-stage lens-frame">
+        <div class="app-scroll" id="lens-scroll">
+        <div class="chat" id="lens-chat">
+          <div class="msg user"><div class="who">You &middot; 10:48 AM</div><div class="bubble">What should a youth employment programme in northern Nigeria measure to show it reduces support for armed groups?</div></div>
+          <div class="msg agent"><div class="who">Peace Intel &middot; 10:48 AM</div><div class="body"><p>Across the library the strongest designs measure attitudes and behaviour separately: stated support for violence, and what people do when an armed group recruits. Employment alone moves the first more often than the second, so the studies that showed effects also tracked status, grievance and contact with the state.</p></div></div>
+        </div>
+        <div class="composer-wrap"><div class="composer" id="lens-composer">
+          <textarea class="ci" rows="2" aria-label="Ask a question" placeholder="Ask Peace Intel about peacebuilding evidence…"></textarea>
+          <div class="composer-bar">
+            <button class="act" type="button" id="mode-btn" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="act" type="button" id="lens-btn" aria-haspopup="dialog" aria-expanded="false"></button>
+            <button class="icon-btn" type="button" aria-label="Attach a file"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"/></svg></button>
+            <span class="spacer"></span>
+            <span class="cb-send"><button class="icon-btn" type="button" aria-label="Dictate"><svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg></button><button class="send" type="button" id="lens-send" aria-label="Send"></button></span>
+          </div>
+        </div></div>
+        </div>
+        <p class="lens-live" id="lens-live" aria-live="polite"></p>
+      </div>
+    </div>
+    <noscript><p class="note">The demo is drawn by script; the specimens below are too.</p></noscript>
+  </div>
+</section>
+
+<section class="ref" id="mode">
+  <div class="wrap">
+    <div class="plate"><span class="pl-n">30</span><span>Answer mode</span><span class="pl-r">Exploration · Rev 79 · 5 Nov 2026</span></div>
+    <div class="ref-t">One control for how far to go.</div>
+    <p class="ref-d">
+      The four-way tray asked for a decision before every question and was the widest thing in the bar, wider than
+      the field&rsquo;s own words. It becomes what the phone already had: one control that names the mode. Pressed,
+      it raises the same card as the lenses, with each mode and what it does, so a reader learns the difference
+      once instead of guessing from a label. A click chooses and closes the card. An answer in any mode but Normal
+      names its mode in its byline. No new CSS: the card is the clarifying questions&rsquo; radio tray.
+      EIRENE has left the modes and is now a lens, under the Alliance with its pluralism framework: it changes
+      what an answer is read through, not how far Peace Intel goes, so it can be on in any mode.
+    </p>
+    <div class="ls-grid">
+      <figure class="ls-fig"><div class="ls-stage"><div class="composer-bar" data-spec="bar-old"></div></div>
+        <figcaption><b>Before</b>Four equal choices, always on show, at the width of the field.</figcaption></figure>
+      <figure class="ls-fig"><div class="ls-stage"><div class="composer-bar" data-spec="bar-new"></div></div>
+        <figcaption><b>30 &middot; 1 &middot; After</b>The mode and the lens, each one control that names its state. The chevron points up: the choice opens above, from the composer. Desktop and phone are now the same bar.</figcaption></figure>
+      <figure class="ls-fig"><div class="ls-stage"><div class="chat" data-spec="mode"></div></div>
+        <figcaption><b>30 &middot; 2 &middot; The modes, open</b>A <code>.clarify</code> with one radio tray and no buttons: choosing is the action. The chosen mode rises out of the tray. With the keyboard the arrows move the choice and Enter or Escape closes.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="ref" id="states">
+  <div class="wrap">
+    <div class="plate"><span class="pl-n">29 &middot; 2 to 29 &middot; 6</span><span>Each state</span><span class="pl-r">Exploration</span></div>
+    <div class="ref-t">Said three times, all in ink.</div>
+    <div class="ls-grid">
+      <figure class="ls-fig"><div class="ls-stage"><div class="composer-bar" data-spec="bar"></div></div>
+        <figcaption><b>29 &middot; 2 &middot; The control, off and on</b>An <code>.act</code> at the left of the bar, with what shapes the answer. Off it reads <em>Lens</em>; on, it fills with ink, the toggle on its own, and names the lens, or counts them. On a phone the word goes and the name stays.</figcaption></figure>
+      <figure class="ls-fig"><div class="ls-stage"><div class="chat" data-spec="read"></div></div>
+        <figcaption><b>29 &middot; 3 &middot; A lens on, its summary open</b>The switch acts at once, so the card needs no Apply: <em>Done</em> closes it. The row that is on rises out of the tray. The name opens the summary under it: what it is, what changes in an answer, where it leans, and the file.</figcaption></figure>
+      <figure class="ls-fig"><div class="ls-stage"><div class="chat" data-spec="line"></div></div>
+        <figcaption><b>29 &middot; 4 &middot; Turned on</b>When the card closes with a change, one line in ink stays where it was, as the skipped questions do, with <em>Change</em> to reopen it. A lens holds for this chat until it is turned off.</figcaption></figure>
+      <figure class="ls-fig"><div class="ls-stage"><div class="chat" data-spec="tag"></div></div>
+        <figcaption><b>29 &middot; 5 &middot; Over the answer</b>A tag under the byline: the partner&rsquo;s mark and the lens, in mono. Every answer the lens shaped carries it, so a copied or shared answer carries it too.</figcaption></figure>
+      <figure class="ls-fig"><div class="ls-stage"><div class="row tight" data-spec="files"></div></div>
+        <figcaption><b>29 &middot; 6 &middot; The lens file</b>Each lens is one Markdown file: a header of who owns it and which version, then what it is, how to read a question through it, its terms, where it leans and the rules every answer keeps. The dialog shows it formatted or as written, and downloads it. Open one.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="ref" id="open">
+  <div class="wrap">
+    <div class="plate"><span class="pl-n">29 &middot; Q</span><span>Open questions</span><span class="pl-r">For Matt, Ahn and Nathanael</span></div>
+    <div class="ref-t">What this page has not decided.</div>
+    <div class="rule-row" style="--cols:2">
+      <div><h3>One lens or several</h3><p class="note">Each switch is independent, so two lenses can be on at once. If two frameworks will disagree on a definition, the switches could turn each other off instead.</p></div>
+      <div><h3>Where the literature differs</h3><p class="note">Every lens file asks the answer to close with a note where the wider evidence disagrees. That note is not drawn yet.</p></div>
+      <div><h3>Experts&rsquo; names</h3><p class="note">Roger Mac Ginty and Shamil Idriss are real people: their lenses, words and names need their agreement before this is shown outside the team. Dr. Talia Mercer is fictional, labelled so on screen, and must be replaced or removed before any demo.</p></div>
+      <div><h3>The modes&rsquo; timings</h3><p class="note">&ldquo;Takes seconds&rdquo;, &ldquo;under a minute&rdquo; and &ldquo;a few minutes&rdquo; are guesses. Nathanael has the real times; if they vary too much to promise, drop them.</p></div>
+      <div><h3>One control for both</h3><p class="note">Mode and lens both shape the answer, so they could share one control and one card (<em>Deep research &middot; AfP</em>). Fewer buttons, but the lens would lose the visibility that makes it a launch feature.</p></div>
+      <div><h3>The marks</h3><p class="note">AfP&rsquo;s mark is on file; Principles for Peace and Search for Common Ground show a dashed slot until theirs arrive with permission. Experts show their initials.</p></div>
+    </div>
+  </div>
+</section>
+
+<dialog class="dlg" data-view="lens" id="lens-dlg" aria-labelledby="lens-dlg-t"></dialog>
+
+<script src="system.js"></script>
+<script>
+/* The live demo, the specimens and the lens file. A mock, as prototypes.js
+   is: read it for behaviour, do not port it. Every framework text is sample
+   text; each lens's Markdown is written out from the same fields the card
+   shows, so the card and the file cannot disagree. */
+(function () {
+  var LENSES = [
+    { id: 'afp', grp: 'org', name: 'Pluralism framework', by: 'Alliance for Peacebuilding', short: 'AfP', logo: 'media/afp.png', file: 'afp-pluralism.lens.md',
+      gloss: 'How a society holds difference: inclusion, belonging, and the institutions that carry them.',
+      about: 'AfP’s framework for pluralism, as provided by the Alliance. It treats a peaceful society as one where difference is held by institutions and everyday relationships, not only managed by security.',
+      changes: ['Frame outcomes as inclusion and belonging as well as reduced violence', 'Draw measures from the framework’s own dimensions where they exist', 'Read programmes for who they include and who they leave out'],
+      terms: [['Pluralism', 'a society’s capacity to hold difference without violence'], ['Belonging', 'whether people see a place for themselves in the society’s institutions'], ['Inclusion', 'who takes part in decisions, and on what terms']],
+      leans: 'Toward social cohesion and identity, and away from security-first or economic readings of the same evidence.' },
+    { id: 'eirene', grp: 'org', name: 'EIRENE indicators', lc: 'EIRENE indicators', by: 'Alliance for Peacebuilding', short: 'EIRENE', tagged: 'EIRENE indicators', logo: 'media/afp.png', file: 'afp-eirene.lens.md',
+      gloss: 'Reads the evidence for what to measure, in EIRENE’s field-tested indicators, ready for monitoring and reporting.',
+      about: 'EIRENE, the Alliance’s set of field-tested monitoring and evaluation indicators. An answer is read against it: which indicators measure what the evidence describes, and how teams have used them.',
+      changes: ['Name the EIRENE indicators that measure what the evidence describes', 'Say where each indicator has been used, and by whom', 'Name the gaps where EIRENE has no indicator for what the evidence shows'],
+      terms: [['Indicator', 'a named, field-tested measure of change, with how to collect it'], ['Construct', 'the thing an indicator sets out to measure, such as trust or social cohesion'], ['Means of verification', 'where the data for an indicator comes from']],
+      leans: 'Toward what can be measured. A change no indicator yet captures can read as smaller than it is.' },
+    { id: 'p4p', grp: 'org', name: 'The Principles for Peace', by: 'Principles for Peace', short: 'P4P', file: 'principles-for-peace.lens.md',
+      gloss: 'Tests a plan against shared standards for how peace processes are designed and run.',
+      about: 'The Principles for Peace standards. A plan is read against them as a checklist: what each principle asks for, and whether the evidence shows the plan meets it.',
+      changes: ['Note which principles a plan meets, and which it does not show', 'Put process questions (who decides, who is accountable) before outcomes', 'Phrase recommendations as standards to meet'],
+      terms: [['Principle', 'a standard a peace process is held to'], ['Process', 'how decisions are made and by whom, as distinct from what they produce'], ['Accountability', 'who answers for a decision, and to whom']],
+      leans: 'Toward how a process is run. It says less about which interventions have measured effects.' },
+    { id: 'sfcg', grp: 'org', name: 'Peace indicators', by: 'Search for Common Ground', short: 'SFCG', file: 'sfcg-peace-indicators.lens.md',
+      gloss: 'Frames results in standard peace indicators and its local partners’ frameworks, ready to report.',
+      about: 'Search for Common Ground’s standard peace indicators, with the frameworks its local partners use. Built for teams who must report results in terms a funder already recognises.',
+      changes: ['Map findings to named indicators where one fits', 'Name the gaps where no indicator measures what the evidence shows', 'Keep local partners’ terms beside the standard ones'],
+      terms: [['Indicator', 'a named, repeatable measure of change'], ['Local framework', 'how a partner in the place describes the change it seeks'], ['Reportable result', 'a finding stated against an indicator a funder recognises']],
+      leans: 'Toward what can be measured and reported. Effects that no indicator captures can read as smaller than they are.' },
+    { id: 'rmg', grp: 'exp', name: 'Futures', by: 'Roger Mac Ginty', short: 'Mac Ginty', ini: 'RM', note: 'In development', file: 'mac-ginty-futures.lens.md',
+      gloss: 'Reads a question forward: scenarios, early signals and what would change the picture.',
+      about: 'A lens being developed with Roger Mac Ginty for reading a question forward: what the evidence implies for the next five to ten years, which signals would change the picture, and which assumptions are fragile.',
+      changes: ['Offer a few scenarios rather than one forecast', 'Name the early signals worth watching', 'Flag the assumptions the evidence rests on'],
+      terms: [['Scenario', 'a plausible future, stated with what would bring it about'], ['Signal', 'an early, observable sign that one scenario is arriving'], ['Fragile assumption', 'something the answer depends on that could stop being true']],
+      leans: 'Toward possibility and change. Where the evidence is thin it can read as speculation.' },
+    { id: 'si', grp: 'exp', name: 'Common ground', by: 'Shamil Idriss, Search for Common Ground', short: 'Idriss', ini: 'SI', file: 'idriss-common-ground.lens.md',
+      gloss: 'Starts from the divides people live with and looks for where opposing groups can act together.',
+      about: 'How Shamil Idriss reads a conflict: begin with the divides people actually live with, then look for the interests opposing groups share and the work they could do together.',
+      changes: ['Name who would need to be in the room, including adversaries', 'Look for shared interests under opposed positions', 'Favour approaches that work with each side over approaches that isolate one'],
+      terms: [['Common ground', 'an interest held on both sides of a divide'], ['Divide', 'a line of identity or interest that people organise around'], ['Collaboration', 'joint action by groups that remain opposed on other things']],
+      leans: 'Toward dialogue and collaboration. It can understate the place of pressure, accountability or justice.' },
+    { id: 'tm', grp: 'exp', name: 'Early warning', by: 'Dr. Talia Mercer, International Crisis Group', short: 'Mercer', ini: 'TM', note: 'Fictional placeholder', file: 'mercer-early-warning.lens.md',
+      gloss: 'Reads a question for escalation risk: what would make violence more likely soon, and what has stopped it before.',
+      about: 'A placeholder for a third expert. Reads a question for escalation risk: what would make violence more likely in the coming months, and what prevented it in comparable cases.',
+      changes: ['Lead with the risk and its timeframe', 'Separate triggers from underlying drivers', 'End with what to watch, and who should act on it'],
+      terms: [['Trigger', 'an event that can set off violence where the drivers are present'], ['Driver', 'a slow cause that makes violence possible'], ['Window', 'the time in which acting still changes the outcome']],
+      leans: 'Toward the short term and the worst case. Slow structural change can drop out of view.' }
+  ];
+  var G = {
+    lens: '<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94"/><path d="M9.69 8h11.48"/><path d="m7.38 12 5.74-9.94"/><path d="M9.69 16 3.95 6.06"/><path d="M14.31 16H2.83"/><path d="m16.62 12-5.74 9.94"/></svg>',
+    x: '<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>',
+    chev: '<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+    file: '<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>'
+  };
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function now() { return new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); }
+  function byId(id) { return LENSES.filter(function (l) { return l.id === id; })[0]; }
+  function lower(l) { return l.lc || l.name.toLowerCase(); }
+  function label(l) { return l.grp === 'org' ? l.by + ', ' + lower(l) : l.by.split(',')[0] + '’s ' + lower(l) + ' lens'; }
+  function names(ids) { return ids.map(function (id) { return label(byId(id)); }).join(' and '); }
+  function mark(l) {
+    if (l.ini) return '<span class="lens-logo"><span class="avatar" aria-hidden="true">' + l.ini + '</span></span>';
+    return l.logo ? '<span class="lens-logo"><img src="' + l.logo + '" alt="' + esc(l.by) + '"></span>' : '<span class="lens-logo is-tbc" title="Mark to come">' + esc(l.short) + '</span>';
+  }
+
+  /* The lens file: Markdown, written out from the lens's fields. */
+  function md(l) {
+    return ['---', 'lens: ' + l.file.replace('.lens.md', ''), 'name: ' + l.name, 'owner: ' + l.by, 'kind: ' + (l.grp === 'org' ? 'Organisation' : 'Expert'),
+      'version: 0.1' + (l.note ? ' (' + l.note.toLowerCase() + ')' : ''), 'updated: 2026-11-05', 'status: Sample text, to be written or approved by the owner', '---', '',
+      '# ' + l.name, '', l.about, '',
+      '## How to read a question through this lens', l.changes.map(function (c) { return '- ' + c; }).join('\n'), '',
+      '## Terms', l.terms.map(function (t) { return '- **' + t[0] + ':** ' + t[1]; }).join('\n'), '',
+      '## Where it leans', l.leans, '',
+      '## Rules every answer keeps',
+      '- Say at the top that the answer is read through this lens.\n- Keep every citation and its tier: the lens frames the evidence and never replaces it.\n- Where the wider literature disagrees with this lens, say so in a closing note.\n- Never present this lens as the consensus of the field.'].join('\n');
+  }
+  function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); }
+  function render(src) {
+    var parts = src.split(/^---$/m), fm = parts[1].trim().split('\n'), body = parts.slice(2).join('---').trim().split('\n'), h = '', list = false;
+    var dl = '<dl class="lens-fm">' + fm.map(function (r) { var i = r.indexOf(':'); return '<dt>' + esc(r.slice(0, i)) + '</dt><dd>' + esc(r.slice(i + 1).trim()) + '</dd>'; }).join('') + '</dl>';
+    body.forEach(function (ln) {
+      var li = /^- /.test(ln);
+      if (list && !li) { h += '</ul>'; list = false; }
+      if (/^# /.test(ln)) h += '<h1>' + inline(ln.slice(2)) + '</h1>';
+      else if (/^## /.test(ln)) h += '<h2>' + inline(ln.slice(3)) + '</h2>';
+      else if (li) { if (!list) { h += '<ul>'; list = true; } h += '<li>' + inline(ln.slice(2)) + '</li>'; }
+      else if (ln.trim()) h += '<p>' + inline(ln) + '</p>';
+    });
+    return dl + '<div class="lens-md">' + h + (list ? '</ul>' : '') + '</div>';
+  }
+
+  /* Pieces, shared by the demo and the specimens. */
+  function btnLabel(ids) { return G.lens + (ids.length === 0 ? 'Lens' : ids.length === 1 ? '<span class="lens-word">Lens &middot; </span>' + esc(byId(ids[0]).short) : ids.length + '<span class="lens-word"> lenses</span>'); }
+  function sw(l, on) { return '<button class="lens-sw" type="button" role="switch" data-lens="sw" data-id="' + l.id + '" aria-checked="' + on + '" aria-label="Use ' + esc(label(l)) + ' in this chat"></button>'; }
+  function row(l, on, open, uid) {
+    var more = 'lens-m-' + uid + '-' + l.id;
+    return '<div class="lens-opt"><div class="lens-row">' + mark(l) +
+      '<div class="lens-txt"><button class="lens-name" type="button" data-lens="read" data-id="' + l.id + '" aria-expanded="' + open + '" aria-controls="' + more + '">' + esc(l.name) + G.chev + '</button>' +
+      '<p>' + esc(l.by) + (l.note ? ' &middot; ' + esc(l.note) : '') + '. ' + esc(l.gloss) + '</p></div>' + sw(l, on) + '</div>' +
+      '<div class="lens-more" id="' + more + '"' + (open ? '' : ' hidden') + '>' +
+        '<p><span class="eyebrow eb-4">What it is &middot; sample text</span>' + esc(l.about) + '</p>' +
+        '<div><span class="eyebrow eb-4">What changes in an answer</span><ul>' + l.changes.map(function (c) { return '<li>' + esc(c) + '</li>'; }).join('') + '</ul></div>' +
+        '<p><span class="eyebrow eb-4">Where it leans</span>' + esc(l.leans) + '</p>' +
+        '<p><button class="btn-text" type="button" data-lens="file" data-id="' + l.id + '">Read the lens file</button></p>' +
+      '</div></div>';
+  }
+  function grp(title, g, on, openId, uid) {
+    return '<div class="lens-grp"><span class="eyebrow eb-4" id="lens-g-' + uid + '-' + g + '">' + title + '</span><div class="lens-opts" role="group" aria-labelledby="lens-g-' + uid + '-' + g + '">' +
+      LENSES.filter(function (l) { return l.grp === g; }).map(function (l) { return row(l, on.indexOf(l.id) > -1, openId === l.id, uid); }).join('') + '</div></div>';
+  }
+  function card(on, openId, uid) {
+    return '<div class="cq-h"><span class="eyebrow eb-4">Lenses</span><button class="icon-btn" type="button" data-lens="close" aria-label="Close lenses">' + G.x + '</button></div>' +
+      '<div class="cq-b"><p class="cq-q" id="lens-q-' + uid + '">Read the evidence through a framework.</p>' +
+      '<p class="cq-help">With no lens, Peace Intel answers from the whole literature and takes no side. A lens frames answers in one organisation&rsquo;s or one expert&rsquo;s terms, and every answer says which it used.</p>' +
+      grp('Organisations', 'org', on, openId, uid) + grp('Experts', 'exp', on, openId, uid) + '</div>' +
+      '<div class="cq-f"><span class="lens-note">For this chat only</span><button class="btn ghost sm" type="button" data-lens="close">Done</button></div>';
+  }
+  function line(ids) {
+    return '<p class="cq-done lens-line">' + G.lens + '<span>' + (ids.length ? 'Lens on: ' + esc(names(ids)) + '. Answers in this chat follow it until you turn it off.' : 'Lens off. Answers read the whole literature again.') + '</span><button class="act sm" type="button" data-lens="change">Change</button></p>';
+  }
+  function tag(ids) {
+    return ids.length ? '<div class="lens-tag">' + ids.map(function (id) { var l = byId(id); return l.logo ? '<img src="' + l.logo + '" alt="">' : ''; }).join('') +
+      '<span>Through ' + esc(ids.map(function (id) { var l = byId(id); return l.tagged || l.short + ' ' + lower(l).replace(/^the /, ''); }).join(' + ')) + '</span></div>' : '';
+  }
+
+  /* 30 · ANSWER MODE. The four-way tray becomes one control that names the
+     mode, opening the same card from the composer: the modes as one choice
+     (.cq-opts, radios), each with what it does. A click chooses and closes;
+     with the keyboard the arrows move and Enter closes. */
+  var MODES = [
+    ['quick', 'Quick', 'A short answer from the library, for a fact or a definition. Takes seconds.'],
+    ['normal', 'Normal', 'A full answer, every claim cited where it is made. Takes under a minute.'],
+    ['deep', 'Deep research', 'Asks a question or two first, then reads widely and reports what it is doing as it goes. Takes a few minutes.']
+  ];
+  var GAUGE = '<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>';
+  var UP = '<svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>';
+  function modeOf(id) { return MODES.filter(function (m) { return m[0] === id; })[0]; }
+  function modeLabel(id) { return GAUGE + esc(modeOf(id)[1]).replace(' research', '<span class="lens-word"> research</span>') + UP; }
+  function modeCard(cur, uid) {
+    return '<div class="cq-h"><span class="eyebrow eb-4">Answer mode</span><button class="icon-btn" type="button" data-mode="close" aria-label="Close answer modes">' + G.x + '</button></div>' +
+      '<div class="cq-b"><p class="cq-q" id="mode-q-' + uid + '">How far should Peace Intel go?</p>' +
+      '<p class="cq-help">Deeper answers read more and take longer.</p>' +
+      '<fieldset class="cq-opts" aria-labelledby="mode-q-' + uid + '">' + MODES.map(function (m) {
+        return '<label class="cq-opt"><input type="radio" name="mode-' + uid + '" value="' + m[0] + '"' + (cur === m[0] ? ' checked' : '') + '><span><b>' + esc(m[1]) + '.</b> ' + esc(m[2]) + '</span></label>';
+      }).join('') + '</fieldset></div>' +
+      '<div class="cq-f"><span class="lens-note">For your next question, and the ones after it</span></div>';
+  }
+
+  /* State: the lenses on in this chat. Every view redraws from it. */
+  var chat = document.getElementById('lens-chat'), btn = document.getElementById('lens-btn'), live = document.getElementById('lens-live'), dlg = document.getElementById('lens-dlg');
+  var field = document.querySelector('#lens-composer .ci'), on = [], atOpen = null, openId = null, form = null;
+  var mbtn = document.getElementById('mode-btn'), mode = 'normal', mform = null, byKey = false;
+  function say(t) { live.textContent = t; }
+  /* The composer holds still at the foot and the thread scrolls behind it, so
+     what is added lands below the fold and is carried up from behind the
+     field: the card rises until its head reaches the top of the frame, or
+     until its foot meets the composer if it is shorter. A scroll, not an
+     animation; instant with reduced motion. */
+  var scroller = document.getElementById('lens-scroll'), calm = matchMedia('(prefers-reduced-motion: reduce)');
+  function rise(el) {
+    var max = scroller.scrollHeight - scroller.clientHeight;
+    var top = el ? el.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - 16 : max;
+    scroller.scrollTo({ top: Math.min(max, top), behavior: calm.matches ? 'auto' : 'smooth' });
+  }
+  function syncBtn() {
+    btn.innerHTML = btnLabel(on); btn.classList.toggle('on', on.length > 0);
+    btn.setAttribute('aria-label', on.length ? 'Lenses: ' + names(on) + ' on' : 'Lenses: none on');
+  }
+  function toggle(id) {
+    var i = on.indexOf(id); if (i > -1) on.splice(i, 1); else on.push(id);
+    [].forEach.call(document.querySelectorAll('#lens-chat .lens-sw[data-id="' + id + '"], #lens-dlg .lens-sw[data-id="' + id + '"]'), function (s) { s.setAttribute('aria-checked', on.indexOf(id) > -1); });
+    syncBtn(); say((on.indexOf(id) > -1 ? 'On: ' : 'Off: ') + label(byId(id)));
+  }
+  function syncMode() { mbtn.innerHTML = modeLabel(mode); mbtn.setAttribute('aria-label', 'Answer mode: ' + modeOf(mode)[1]); }
+  function openMode() {
+    if (mform) { closeMode(); return; }
+    if (form) closeCard(true);
+    mform = document.createElement('form'); mform.className = 'clarify'; mform.setAttribute('aria-labelledby', 'mode-q-d'); mform.onsubmit = function () { return false; };
+    chat.appendChild(mform); mform.innerHTML = modeCard(mode, 'd'); mbtn.setAttribute('aria-expanded', 'true');
+    mform.querySelector('input:checked').focus({ preventScroll: true }); rise(mform);
+    mform.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Enter') { e.preventDefault(); closeMode(); }
+      else if (/^Arrow/.test(e.key)) byKey = true;
+    });
+    mform.addEventListener('change', function (e) {
+      mode = e.target.value; syncMode(); say('Answer mode: ' + modeOf(mode)[1]);
+      if (byKey) byKey = false; else closeMode();
+    });
+    mform.addEventListener('click', function (e) { if (e.target.closest('[data-mode="close"]')) closeMode(); });
+  }
+  function closeMode(quiet) {
+    if (!mform) return;
+    mform.remove(); mform = null; mbtn.setAttribute('aria-expanded', 'false');
+    if (!quiet) { mbtn.focus({ preventScroll: true }); rise(); }
+  }
+  mbtn.addEventListener('click', openMode);
+  function openCard() {
+    if (mform) closeMode(true);
+    if (form) { form.querySelector('.lens-sw').focus({ preventScroll: true }); rise(form); return; }
+    atOpen = on.join(); openId = null;
+    form = document.createElement('form'); form.className = 'clarify'; form.setAttribute('aria-labelledby', 'lens-q-d'); form.onsubmit = function () { return false; };
+    chat.appendChild(form); form.innerHTML = card(on, openId, 'd'); btn.setAttribute('aria-expanded', 'true');
+    form.querySelector('.lens-name').focus({ preventScroll: true }); rise(form);
+    form.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCard(); });
+  }
+  function closeCard(quiet) {
+    if (!form) return;
+    if (on.join() !== atOpen) form.insertAdjacentHTML('beforebegin', line(on));
+    form.remove(); form = null; btn.setAttribute('aria-expanded', 'false');
+    if (!quiet) { btn.focus({ preventScroll: true }); rise(); }
+  }
+  function readMore(b) {
+    var open = b.getAttribute('aria-expanded') !== 'true';
+    b.setAttribute('aria-expanded', open); document.getElementById(b.getAttribute('aria-controls')).hidden = !open;
+  }
+
+  /* The lens file, in a dialog: formatted or as written. */
+  var fileId = null, view = 'fmt', opener = null;
+  function drawFile() {
+    var l = byId(fileId), src = md(l);
+    dlg.innerHTML = '<div class="dlg-in"><div class="dlg-h"><h2 id="lens-dlg-t" tabindex="-1">' + esc(l.name) + '</h2>' +
+      '<div class="seg mono" aria-label="Show the file">' + [['fmt', 'Formatted'], ['src', 'Markdown']].map(function (v) { return '<button type="button" data-lens="view" data-v="' + v[0] + '" aria-pressed="' + (view === v[0]) + '">' + v[1] + '</button>'; }).join('') + '</div>' +
+      '<span class="spacer"></span><button class="icon-btn" type="button" data-lens="dlg-close" aria-label="Close the lens file">' + G.x + '</button></div>' +
+      '<p class="dlg-sub"><span class="lens-file">' + esc(l.file) + '</span><br>The file Peace Intel reads with every question while this lens is on. Owned by <b>' + esc(l.by) + '</b>. Sample text.</p>' +
+      '<div class="dlg-scroll">' + (view === 'fmt' ? render(src) : '<pre class="lens-src">' + esc(src) + '</pre>') + '</div>' +
+      '<div class="dlg-f"><button class="act" type="button" data-lens="download">' + G.file + 'Download .md</button><span class="spacer"></span><span>Use in this chat</span>' + sw(l, on.indexOf(l.id) > -1) + '</div></div>';
+  }
+  function openFile(id, from) { fileId = id; view = 'fmt'; opener = from; drawFile(); dlg.showModal(); dlg.querySelector('h2').focus(); }
+  dlg.addEventListener('close', function () { if (opener && document.contains(opener)) opener.focus(); });
+  dlg.addEventListener('click', function (e) {
+    if (e.target === dlg) { dlg.close(); return; }
+    var b = e.target.closest('[data-lens]'); if (!b) return;
+    var act = b.getAttribute('data-lens');
+    if (act === 'view') { view = b.getAttribute('data-v'); drawFile(); dlg.querySelector('[data-v="' + view + '"]').focus(); }
+    else if (act === 'dlg-close') dlg.close();
+    else if (act === 'sw') toggle(fileId);
+    else if (act === 'download') {
+      var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([md(byId(fileId))], { type: 'text/markdown' })); a.download = byId(fileId).file; a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 0); say('Downloaded ' + byId(fileId).file);
+    }
+  });
+
+  /* One listener for every lens control on the page. */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-lens]'); if (!b || dlg.contains(b)) return;
+    var act = b.getAttribute('data-lens'), id = b.getAttribute('data-id');
+    if (act === 'sw') toggle(id);
+    else if (act === 'read') readMore(b);
+    else if (act === 'file') openFile(id, b);
+    else if (act === 'close') closeCard();
+    else if (act === 'change') openCard();
+  });
+  btn.addEventListener('click', openCard);
+
+  function send() {
+    var q = field.value.trim() || 'Which indicators should we report to our funder?';
+    if (form) closeCard(true);
+    if (mform) closeMode(true);
+    var at = now(), ids = on.slice(), mname = mode === 'normal' ? '' : ' &middot; ' + esc(modeOf(mode)[1]);
+    chat.insertAdjacentHTML('beforeend', '<div class="msg user"><div class="who">You &middot; ' + at + '</div><div class="bubble">' + esc(q) + '</div></div>');
+    var a = document.createElement('div'); a.className = 'msg agent'; chat.appendChild(a);
+    a.innerHTML = '<div class="who">Peace Intel' + mname + ' &middot; ' + at + '</div>' + tag(ids) + '<div class="body"><p>' + (ids.length ? 'Reading the library through ' + esc(names(ids)) + '…' : 'Reading the library…') + '</p></div>';
+    setTimeout(function () {
+      var b = a.querySelector('.body'); b.innerHTML = '<p>' + (ids.length ? 'This is the demo, so the answer ends here. Through a lens, the answer uses its terms and its way of reading the question, and closes with where the wider literature reads the evidence differently.' : 'This is the demo, so the answer ends here. With no lens, the answer reads the whole literature and takes no institution&rsquo;s side.') + '</p>';
+      rise();
+    }, 1600);
+    field.value = ''; rise();
+  }
+  document.getElementById('lens-send').addEventListener('click', send);
+  field.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+  syncBtn(); syncMode();
+  scroller.scrollTop = scroller.scrollHeight;
+
+  /* The specimens: drawn, not wired, except the files, which open. */
+  document.querySelector('[data-spec="bar"]').innerHTML = '<button class="act" type="button" tabindex="-1">' + modeLabel('normal') + '</button><button class="act" type="button" tabindex="-1">' + btnLabel([]) + '</button><button class="act on" type="button" tabindex="-1">' + btnLabel(['afp']) + '</button><button class="act on" type="button" tabindex="-1">' + btnLabel(['afp', 'rmg']) + '</button>';
+  document.querySelector('[data-spec="bar-old"]').innerHTML = '<div class="seg mono" aria-label="Answer mode"><button type="button" tabindex="-1" aria-pressed="false">Quick</button><button type="button" tabindex="-1" aria-pressed="true">Normal</button><button type="button" tabindex="-1" aria-pressed="false">Deep research</button><button type="button" tabindex="-1" aria-pressed="false">Eirene</button></div><button class="act" type="button" tabindex="-1">' + btnLabel([]) + '</button><span class="spacer"></span><span class="cb-send"><button class="send" type="button" tabindex="-1" aria-label="Send"></button></span>';
+  document.querySelector('[data-spec="bar-new"]').innerHTML = '<button class="act" type="button" tabindex="-1">' + modeLabel('deep') + '</button><button class="act on" type="button" tabindex="-1">' + btnLabel(['afp']) + '</button><span class="spacer"></span><span class="cb-send"><button class="send" type="button" tabindex="-1" aria-label="Send"></button></span>';
+  var mspec = document.querySelector('[data-spec="mode"]');
+  mspec.innerHTML = '<div class="clarify">' + modeCard('deep', 's') + '</div>'; mspec.inert = true;
+  var spec = document.querySelector('[data-spec="read"]');
+  spec.innerHTML = '<div class="clarify">' + card(['afp'], 'afp', 's') + '</div>';
+  spec.inert = true;
+  document.querySelector('[data-spec="line"]').innerHTML = line(['afp']).replace('data-lens="change"', 'tabindex="-1"');
+  document.querySelector('[data-spec="tag"]').innerHTML = '<div class="msg agent"><div class="who">Peace Intel &middot; 10:52 AM</div>' + tag(['afp']) + '<div class="body"><p>Measured through the pluralism framework, the programme&rsquo;s strongest claim is on belonging: participants reported more contact across groups a year on.</p></div></div>';
+  document.querySelector('[data-spec="files"]').innerHTML = LENSES.map(function (l) { return '<button class="act sm" type="button" data-lens="file" data-id="' + l.id + '">' + G.file + esc(l.file) + '</button>'; }).join('');
+})();
+</script>
+</body>
+</html>
